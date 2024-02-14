@@ -22,9 +22,16 @@
     <div class="container mainContainer">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                <a class="nav-link" id="searchPanel-tab" data-toggle="tab" href="#home" role="tab" aria-controls="Home"
                     aria-selected="true">Home</a>
             </li>
+
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="searchPanel-tab" data-toggle="tab" href="#searchPanel" role="tab" aria-controls="searchPanel"
+                    aria-selected="true">Stock Symbol Lookup</a>
+            </li>
+
+            <!-- this is tab for web service IEX Cloud-->
         </ul>
 
         <div class="tab-content" id="myTabContent">
@@ -71,6 +78,22 @@
                     </div>
                 </div> <!-- end .row -->
             </div>
+
+            <!-- content for my service 1 tab Stock Symbol Lookup-->
+            <div class="tab-pane fade show" id="searchPanel" role="tabpanel" aria-labelledby="searchPanel-tab">
+                <br>
+                <div class = "card border-primary mb-3">
+                    <div class = "card-header">Search Stock Prices (IEX Cloud)</div>
+                    <div class = "card-body">
+                        <p class = "lead">Enter a stock symbol:</p>
+                        <input type = "text" id = "symbol" class = "form-control">
+                            placeholder = "enter a stock symbol (e.g. APPL)"> 
+                        <br>
+                        <button type = "submit" class = "btn btn-primary" id = "searchStock">Get Prices</button>
+                    </div>
+                </div>
+                </div>
+
             
     </div>
 
@@ -96,6 +119,22 @@
     </div>
 
     <script>
+        // add event listener for the searchStock button 
+        // communicate with service provider 1:
+        // parse response and display on the content of the tab-pane
+        $("#searchStock").click(async function getResults() {
+            var symbol = $("#symbol").val();
+
+            console.log(symbol);
+            const token = '';
+            const url = '';
+            // Fetch used to make HTTP requests to URL
+            const response = await fetch (url, { // wait for the fetch() function to complete and return a respons
+                method: 'GET',
+                cache: 'no cache'
+            });
+
+        });
 
         // retrieve mdoal
         var modal = document.getElementById("infoDialog");
